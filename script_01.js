@@ -14,6 +14,24 @@
 
 
 
+// module: addition c = a + b |  test:
+
+// output(add(2,2));
+// output(add(2,-2));
+// output(add(2,0));
+
+function add(a,b) {
+	let c = a + b;
+	return c;
+}
+	// ODER (andere Option):
+		// function add(a,b) {
+		// 	return a + b;
+		// }
+
+
+
+
 
 // module: output | test:
 // output("hello");
@@ -21,4 +39,3 @@
 function output(outputData) {
 	console.log(outputData);
 }
-  
