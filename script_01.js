@@ -13,6 +13,10 @@
 
 
 
+// Konstanten
+const ERROR_STR_DIV = "Division durch 0 nicht möglich! Are You Mad?";
+const ERROR_STR_GEN = "Irgendetwas ging schief!"
+
 
 // module: addition c = a + b |  test:
 
@@ -48,19 +52,21 @@ function multiply(a,b) {
 
 // module: division a / b |  test:
 
-output(divide(3,2));
-output(divide(3,-2));
-output(divide(3,0));
-output(divide(0,2));
+// output(divide(3,2));
+// output(divide(3,-2));
+// output(divide(3,0));
+// output(divide(0,2));
 function divide(a,b) {
-
 	if (b != 0) {
 		return a/b;
 	} else {
-		return "Teilen durch 0 nicht möglich";
+		return ("WTF, Are you Mad?");
 	}
-
-
+	// ODER (andere Option)
+	if (b == 0) {
+		return ERROR_STR_DIV;
+	}
+	return a/b;
 }
 
 
