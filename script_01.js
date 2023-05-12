@@ -31,11 +31,19 @@ function add(a,b) {
 
 
 // module: subtraction a - b |  test:...
-output(subtract(3,2));
-output(subtract(3,-2));
-output(subtract(3,0));
+// output(subtract(3,2));
+// output(subtract(3,-2));
+// output(subtract(3,0));
 function subtract(a,b) {
 	return a - b;
+}
+
+// module: addition a + b | Test:...
+// output(multiply(3,2));
+// output(multiply(3,-2));
+// output(multiply(3,0));
+function multiply(a,b) {
+	return a*b;
 }
 
 
@@ -46,3 +54,4 @@ function subtract(a,b) {
 function output(outputData) {
 	console.log(outputData);
 }
+
