@@ -13,19 +13,91 @@
 
 
 
-// Konstanten
-const ERROR_STR_DIV = "Division durch 0 nicht möglich! Are You Mad?";
-const ERROR_STR_GEN = "Irgendetwas ging schief!"
+/** Konstanten (Global)*/
+const ERROR_STR_DIV = "ERROR: Division by 0 not possible!";
+const ERROR_STR_GEN = "ERROR: Something went wrong!";
+const ERROR_STR_ABORT = "ERROR: Aborted by user!";
+const INFO_STR_OP = "Please insert correct operator [ + | - | * | : | / ]:";
+const INFO_STR_RES = "The result is: ";
+const INFO_STR_PRE_NUM = "Please insert ";
+const INFO_STR_POST_NUM = " number:";
+
+/** Variable (Global)*/
+let isNotAborted; 
+
+// application / App
+startApp();
+function startApp() {
+    let num1,num2,op;
+    isNotAborted = true;
+
+    if (isNotAborted){num1 = getNumber("1st");}
+    if (isNotAborted){op = getOp();}
+    if (isNotAborted){num2 = getNumber("2nd");}
+
+    if (isNotAborted){
+        output(calculator(num1,num2,op)); 
+    } else{
+        output(ERROR_STR_ABORT);
+    }
+}
+
+// module: data input | test:
+// output(getNumber("1st"));
+function getNumber(figure) {
+    let displayStr = INFO_STR_PRE_NUM + figure + INFO_STR_POST_NUM;
+    let inputStr = prompt(displayStr) 
+    let num = parseInt(inputStr);
+
+    // if num is NOT a number AND user DIDN'T click at Abbrechen
+    while (isNaN(num) && (inputStr !== null)) {
+        inputStr =  prompt(displayStr);
+        num = parseInt(inputStr); 
+    }
+
+    // if this is aborted, ALL gets aborted ...
+    if(inputStr == null){isNotAborted = false;}
+    return num;
+
+}
+
+// module: input operator | Test:
+// output(getOp());
+function getOp() {
+
+    let op = prompt(INFO_STR_OP); 
+    // if op is NOT valid AND user DIDN'T click at Abbrechen
+    while (isOpNotValid(op) && (op !== null)) {
+        op = prompt(INFO_STR_OP);
+    }
+
+    if (op == null){isNotAborted = false;}
+    return op;
+}
+
+// module: check operator | Test:
+// agreement : "+","-","*",":","/"
+// output(isOpNotValid("+"));
+// output(isOpNotValid("-"));
+// output(isOpNotValid("*"));
+// output(isOpNotValid(":"));
+// output(isOpNotValid("/"));
+// output(isOpNotValid("#?#"));
+// output(isOpNotValid(""));
+function isOpNotValid(op) {
+    return op != "+" && op != "-" && op != "*" && op != ":" && op != "/";
+}
+
 
 // module: calculator | tests:
 // agreement : "+","-","*",":","/"
-output(calculator(3,2,"+"));
-output(calculator(3,2,"-"));
-output(calculator(3,2,"*"));
-output(calculator(3,2,":"));
-output(calculator(3,2,"/"));
-output(calculator(3,0,"/"));
-output(calculator(3,2,"#?!"));
+// output(calculator(3,2,"+"));
+// output(calculator(3,2,"-"));
+// output(calculator(3,2,"*"));
+// output(calculator(3,2,":"));
+// output(calculator(3,2,"/"));
+// output(calculator(3,0,"/"));
+// output(calculator(3,2,"#?!"));
 function calculator(a,b,op) {
 
 	switch (op) {
