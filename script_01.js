@@ -46,6 +46,22 @@ function multiply(a,b) {
 	return a*b;
 }
 
+// module: division a / b |  test:
+
+output(divide(3,2));
+output(divide(3,-2));
+output(divide(3,0));
+output(divide(0,2));
+function divide(a,b) {
+
+	if (b != 0) {
+		return a/b;
+	} else {
+		return "Teilen durch 0 nicht möglich";
+	}
+
+
+}
 
 
 // module: output | test:
